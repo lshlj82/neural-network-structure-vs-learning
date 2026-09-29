@@ -9,14 +9,6 @@ It is a companion to:
 
 The demo was created by Claude Opus 5.5.
 
-## Running it
-
-Open `index.html` in any modern browser. There is nothing to install or build: the page is fully self-contained, including the dataset, and trains the networks in plain JavaScript on your machine.
-
-To host it with GitHub Pages, push `index.html` to the repository and enable Pages in the repository settings; the demo is then served at the repository’s Pages address.
-
-The only external request is for the Schibsted Grotesk font from Google Fonts. Without a network connection the page falls back to the system font and works the same.
-
 ## What the demo shows
 
 **Relational graph.** Node *i* stands for neuron *i* in every hidden layer. A link *i–j* means neurons *i* and *j* exchange messages, and every node has a self-loop. Hover a node or a link to see exactly which weights it turns into. “Play message passing” animates the messages sent along each link in every layer.
