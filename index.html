@@ -205,8 +205,7 @@ figcaption{font-size:13.5px;color:var(--ink2);margin-top:10px;line-height:1.45;m
           <p class="hovernote" id="hoverNote"></p>
         </figure>
         <figure class="panel">
-          <h3 id="matTitle">Weight matrix of layer 1</h3>
-          <p class="sub" id="matFrom" style="margin-bottom:2px;color:var(--ink)">Weights from hidden layer 1 to hidden layer 2.</p>
+          <h3 id="matTitle">Weighted matrix of hidden layer 1 to hidden layer 2</h3>
           <p class="sub">Cell (i, j) is w<sub>ij</sub>, the weight from neuron j to neuron i. Blank cells are links the graph doesn’t have, so this matrix is the graph’s weighted adjacency matrix with self-loops on the diagonal.</p>
           <canvas id="cvMat" aria-label="Weight matrix"></canvas>
           <div class="roundbar"><span class="pill">Layer</span><div class="seg" id="roundBtns" role="group" aria-label="Select layer"></div></div>
@@ -301,7 +300,7 @@ figcaption{font-size:13.5px;color:var(--ink2);margin-top:10px;line-height:1.45;m
       <section class="panel prose">
         <h3>Disclaimer</h3>
         <p>This demo is a visual illustration of the method, not a replication of the paper’s results. The paper used CIFAR-10, 128-node graphs and 200 epochs on a GPU; this demo uses the much smaller UCI digits set and a smaller network, so its numbers are noisy and needn’t match the paper’s. In informal runs with the default settings, the modular and fully connected networks were within noise of each other.</p>
-        <p><b>Reference.</b> A. Krizhevsky, “Learning Multiple Layers of Features from Tiny Images,” Technical Report, University of Toronto (2009), <a href="https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf">www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf</a>. This is the CIFAR-10 dataset used in the paper.</p>
+        <p><b>References.</b> CIFAR-10: A. Krizhevsky, “Learning Multiple Layers of Features from Tiny Images,” Technical Report, University of Toronto (2009), <a href="https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf">www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf</a>. MNIST, mentioned at the top of this page: Y. LeCun, L. Bottou, Y. Bengio and P. Haffner, “Gradient-based learning applied to document recognition,” <i>Proceedings of the IEEE</i> <b>86</b>, 2278–2324 (1998), <a href="https://doi.org/10.1109/5.726791">doi:10.1109/5.726791</a>.</p>
       </section>
     </main>
   </div>
@@ -525,7 +524,7 @@ cvNet.addEventListener('click',e=>{if(!netGeo)return;const x=e.clientX-cvNet.get
 /* ---------- weight matrix of the selected layer ---------- */
 const cvMat=$('#cvMat');let matGeo=null;
 function drawMat(){const g=S.graph,N=g.N,r=S.anim?S.anim.r:S.round;const sz=Math.min(cvMat.clientWidth,330);const {ctx,w}=fit(cvMat,sz);const lab=18,ox=(w-sz)/2+lab,S2=sz-lab,cs=S2/N;
-  $('#matTitle').textContent='Weight matrix of layer '+r;$('#matFrom').textContent=`Weights from hidden layer ${r} to hidden layer ${r+1}.`;
+  $('#matTitle').textContent=`Weighted matrix of hidden layer ${r} to hidden layer ${r+1}`;
   const W=S.gnet.L[r].W;let mx=1e-9;for(let q=0;q<W.length;q++)mx=Math.max(mx,Math.abs(W[q]));
   ctx.fillStyle=T.paper;ctx.fillRect(ox,lab,S2,S2);
   for(let i=0;i<N;i++)for(let j=0;j<N;j++){if(!g.adj[i*N+j])continue;const v=W[i*N+j],m=Math.abs(v)/mx;let al=0.18+0.82*Math.sqrt(m);

@@ -21,7 +21,7 @@ The only external request is for the Schibsted Grotesk font from Google Fonts. W
 
 **Relational graph.** Node *i* stands for neuron *i* in every hidden layer. A link *i–j* means neurons *i* and *j* exchange messages, and every node has a self-loop. Hover a node or a link to see exactly which weights it turns into. “Play message passing” animates the messages sent along each link in every layer.
 
-**Weight matrix.** For the selected layer *r*, cell (*i*, *j*) shows the learned weight *w<sub>ij</sub><sup>(r)</sup>* from neuron *j* to neuron *i*. It is the graph’s weighted adjacency matrix with self-loops on the diagonal. Missing links are fixed at zero, and communities show up as blocks on the diagonal.
+**Weighted matrix of hidden layer *r* to hidden layer *r* + 1.** For the selected layer *r*, cell (*i*, *j*) shows the learned weight *w<sub>ij</sub><sup>(r)</sup>* from neuron *j* to neuron *i*. It is the graph’s weighted adjacency matrix with self-loops on the diagonal. Missing links are fixed at zero, and communities show up as blocks on the diagonal.
 
 **From the relational graph to the whole network.** The full MLP: 64 pixels feed hidden layer 1 densely, 4 layers of message exchange on the graph connect the 5 hidden layers, and hidden layer 5 feeds the 10 digit outputs densely. Hovering anywhere traces a neuron or link through every layer.
 
@@ -104,6 +104,7 @@ Changing any graph setting draws a new graph and restarts the runs automatically
 
 - E. Alpaydin and C. Kaynak, “Optical Recognition of Handwritten Digits,” UCI Machine Learning Repository (1998). DOI: [10.24432/C50P49](https://doi.org/10.24432/C50P49). License: CC BY 4.0.
 - F. Pedregosa *et al.*, “Scikit-learn: Machine Learning in Python,” *Journal of Machine Learning Research* **12**, 2825–2830 (2011).
+- Y. LeCun, L. Bottou, Y. Bengio and P. Haffner, “Gradient-based learning applied to document recognition,” *Proceedings of the IEEE* **86**, 2278–2324 (1998). DOI: [10.1109/5.726791](https://doi.org/10.1109/5.726791). This introduced MNIST, the dataset in the comparison table above.
 
 ## Disclaimer
 
