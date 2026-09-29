@@ -9,6 +9,14 @@ It is a companion to:
 
 The demo was created by Claude Opus 5.5.
 
+## Running it
+
+Open `index.html` in any modern browser. There is nothing to install or build: the page is fully self-contained, including the dataset, and trains the networks in plain JavaScript on your machine.
+
+To host it with GitHub Pages, push `index.html` to the repository and enable Pages in the repository settings; the demo is then served at the repository’s Pages address.
+
+The only external request is for the Schibsted Grotesk font from Google Fonts. Without a network connection the page falls back to the system font and works the same.
+
 ## What the demo shows
 
 **Relational graph.** Node *i* stands for neuron *i* in every hidden layer. A link *i–j* means neurons *i* and *j* exchange messages, and every node has a self-loop. Hover a node or a link to see exactly which weights it turns into. “Play message passing” animates the messages sent along each link in every layer.
@@ -97,9 +105,11 @@ Changing any graph setting draws a new graph and restarts the runs automatically
 - E. Alpaydin and C. Kaynak, “Optical Recognition of Handwritten Digits,” UCI Machine Learning Repository (1998). DOI: [10.24432/C50P49](https://doi.org/10.24432/C50P49). License: CC BY 4.0.
 - F. Pedregosa *et al.*, “Scikit-learn: Machine Learning in Python,” *Journal of Machine Learning Research* **12**, 2825–2830 (2011).
 
-## Limitations
+## Disclaimer
 
-This is a teaching tool, not a replication. The paper used CIFAR-10, 128-node graphs and 200 epochs on a GPU; this demo uses the much smaller UCI digits set and a smaller network, so its numbers are noisy and needn’t match the paper’s. In informal runs with the default settings, the modular and fully connected networks were within noise of each other.
+This demo is a visual illustration of the method, not a replication of the paper’s results. The paper used CIFAR-10, 128-node graphs and 200 epochs on a GPU; this demo uses the much smaller UCI digits set and a smaller network, so its numbers are noisy and needn’t match the paper’s. In informal runs with the default settings, the modular and fully connected networks were within noise of each other.
+
+CIFAR-10 reference: A. Krizhevsky, “Learning Multiple Layers of Features from Tiny Images,” Technical Report, University of Toronto (2009), <https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf>.
 
 ## Related code from the paper
 
