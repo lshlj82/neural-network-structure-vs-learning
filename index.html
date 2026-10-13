@@ -12,7 +12,7 @@
   function effective(){return saved()||(sys&&sys.matches?'dark':'light')}
   function apply(){root.setAttribute('data-theme',effective());root.style.colorScheme=effective()}
   apply();
-  // Pages listen for OS colour-scheme changes to redraw their canvases; make those
+  // Pages listen for OS color-scheme changes to redraw their canvases; make those
   // listeners (and .matches checks) follow the chosen theme instead of the OS alone.
   if(nativeMM){
     window.matchMedia=function(q){
@@ -71,6 +71,7 @@
 @media print{#theme-toggle{display:none}}
 </style>
 <!-- theme-toggle:end -->
+
 
 
 
@@ -353,7 +354,7 @@ figcaption{font-size:13.5px;color:var(--ink2);margin-top:10px;line-height:1.45;m
 
       <section class="panel prose">
           <h3>Reading the translation</h3>
-          <p>In layer r, each neuron of hidden layer r + 1 sums what its graph neighbours in hidden layer r send, itself included (Eq. 1):</p>
+          <p>In layer r, each neuron of hidden layer r + 1 sums what its graph neighbors in hidden layer r send, itself included (Eq. 1):</p>
           <p class="eq">x<sub>i</sub><sup>(r+1)</sup> = ReLU( Σ<sub>j ∈ N(i)</sub> w<sub>ij</sub><sup>(r)</sup> x<sub>j</sub><sup>(r)</sup> )</p>
           <p><b>A node i</b> is neuron i, present in every hidden layer; its self-loop links neuron i in one layer to neuron i in the next. <b>A link i–j</b> becomes two weights per layer, w<sub>ij</sub> and w<sub>ji</sub>. <b>A self-loop</b> becomes w<sub>ii</sub>, so a neuron’s own state isn’t discarded. A missing link fixes both weights at zero.</p>
           <p><b>Depth</b> is the number of hidden layers. This demo uses 5, as in the paper’s main results, so there are 4 graph-shaped weight layers between them, each with its own weights but the same wiring. The 64 pixels reach hidden layer 1 densely, and hidden layer 5 reaches the 10 digits densely.</p>
@@ -696,7 +697,7 @@ function padToInput(){if(!dirty)return;const im=pctx.getImageData(0,0,148,148).d
 function buildSelectors(){const lb=$('#layerBtns');lb.innerHTML='';for(let k=1;k<=S.D;k++){const b=document.createElement('button');b.type='button';b.textContent=String(k);b.setAttribute('aria-label','Hidden layer '+k);b.addEventListener('click',()=>{S.anim=null;resetPlay();setLayer(k)});lb.appendChild(b)}
   const rb=$('#roundBtns');rb.innerHTML='';for(let k=1;k<S.D;k++){const b=document.createElement('button');b.type='button';b.textContent=String(k);b.setAttribute('aria-label','Layer '+k);b.addEventListener('click',()=>{S.anim=null;resetPlay();setRound(k)});rb.appendChild(b)}}
 function setLayer(k){S.layer=k;$('#layerBtns').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',i===k-1?'true':'false'));
-  $('#layerNote').textContent=k===1?'Node colours show hidden layer 1: each neuron has just read all 64 pixels. Brighter means more active.':`Node colours show hidden layer ${k}, after ${k-1} layer${k>2?'s':''} of message exchange. Each neuron has now mixed in neighbours up to ${k-1} link${k>2?'s':''} away.`;drawStatic()}
+  $('#layerNote').textContent=k===1?'Node colors show hidden layer 1: each neuron has just read all 64 pixels. Brighter means more active.':`Node colors show hidden layer ${k}, after ${k-1} layer${k>2?'s':''} of message exchange. Each neuron has now mixed in neighbors up to ${k-1} link${k>2?'s':''} away.`;drawStatic()}
 function setRound(k){S.round=k;$('#roundBtns').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',i===k-1?'true':'false'));updateHoverNote();drawStatic()}
 function resetPlay(){$('#play').textContent='Play message passing'}
 $('#play').addEventListener('click',()=>{if(S.anim){S.anim=null;resetPlay();drawStatic();return}
